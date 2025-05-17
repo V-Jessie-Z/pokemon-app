@@ -120,9 +120,26 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.PokemonScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  types: 'types',
+  abilities: 'abilities'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 
 exports.Prisma.ModelName = {
-
+  Pokemon: 'Pokemon'
 };
 
 /**

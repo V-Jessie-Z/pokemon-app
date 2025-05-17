@@ -13,3 +13,10 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Pokemon {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  types     String[]
+  abilities String[]
+}
