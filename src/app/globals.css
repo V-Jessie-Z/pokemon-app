@@ -120,3 +120,42 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes pikachu-run {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.animate-pikachu-run {
+  animation: pikachu-run 2.5s linear forwards;
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-loading-bar {
+  animation: loading-bar 2.5s linear forwards;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px #facc15, 0 0 20px #facc15;
+  }
+  50% {
+    box-shadow: 0 0 20px #facc15, 0 0 40px #facc15;
+  }
+}
+
+.animate-glow {
+  animation: glow 1.8s ease-in-out infinite;
+}

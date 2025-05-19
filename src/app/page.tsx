@@ -1,47 +1,55 @@
-import { getAllPokemon } from "@/actions/pokemon"
-import { AddManyPokemonButton } from "@/components/AddPokemonButton"
+"use client"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 
+export default function HomePage() {
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
-
-type Pokemon = {
-  id: number
-  name: string
-  image: string
-  types: string
-  abilities: string
-}
-
-export default async function HomePage() {
-  const pokemons: Pokemon[] = await getAllPokemon()
+  const handleClick = () => {
+    setLoading(true)
+    setTimeout(() => {
+      router.push("/pokemon")
+    }, 2000) // Match animation duration
+  }
 
   return (
-    <main className="p-4 max-w-5xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Pokémon List</h1>
-
-      <div className="mb-8">
-        <AddManyPokemonButton />
+    <main 
+      className="relative min-h-screen bg-cover bg-center text-black flex justify-center pt-55 overflow-hidden"
+      style={{
+        backgroundImage: "url('https://wallpapercave.com/wp/wp12857066.jpg')",
+      }}
+    >
+      <div className="bg-white/0 p-10 rounded-xl text-center max-w-xl shadow-lg ">
+        <h1 className="text-5xl text-white font-extrabold mb-6 drop-shadow-lg">Welcome to the PokéWorld</h1>
+       <br></br>
+        <button
+          onClick={handleClick}
+          className="bg-yellow-400 text-black font-bold py-3 px-6 rounded-full shadow-2xl transition duration-300 animate-glow"
+        >
+          View Pokémon List
+        </button>
       </div>
 
-      {pokemons.length === 0 ? (
-        <p className="text-muted-foreground">
-          No Pokémon found. Use the button above to add some.
-        </p>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {pokemons.map((p) => (
-            <div key={p.id} className="border rounded-xl p-4 shadow-sm bg-white">
-              <img
-                src={p.image || '/placeholder.png'}
-                alt={p.name}
-                className="w-20 h-20 mx-auto mb-2 object-contain"
-              />
-              <h3 className="text-lg text-center font-medium capitalize">{p.name}</h3>
-              <p className="text-sm text-gray-700">Type(s): {p.types}</p>
-              <p className="text-sm text-gray-700">Abilities: {p.abilities}</p>
-            </div>
-          ))}
-        </div>
-      )}
+{loading && (
+  <>
+    {/* Loading Bar Container */}
+    <div className="absolute bottom-4 left-10 right-10 h-4 bg-gray-300 rounded-full overflow-hidden z-40">
+      <div className="h-full bg-yellow-400 animate-loading-bar" />
+    </div>
+
+    {/* Pikachu GIF */}
+    <img
+      src="https://media.tenor.com/SH31iAEWLT8AAAAi/pikachu-running.gif"
+      alt="Pikachu Running"
+      className="absolute bottom-10 left-[-100px] w-24 animate-pikachu-run z-50"
+    />
+  </>
+)}
+
+
+
+
     </main>
   )
 }

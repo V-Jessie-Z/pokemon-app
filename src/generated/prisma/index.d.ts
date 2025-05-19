@@ -883,15 +883,21 @@ export namespace Prisma {
 
   export type PokemonAvgAggregateOutputType = {
     id: number | null
+    height: number | null
+    weight: number | null
   }
 
   export type PokemonSumAggregateOutputType = {
     id: number | null
+    height: number | null
+    weight: number | null
   }
 
   export type PokemonMinAggregateOutputType = {
     id: number | null
     name: string | null
+    height: number | null
+    weight: number | null
     image: string | null
     types: string | null
     abilities: string | null
@@ -900,6 +906,8 @@ export namespace Prisma {
   export type PokemonMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    height: number | null
+    weight: number | null
     image: string | null
     types: string | null
     abilities: string | null
@@ -908,6 +916,8 @@ export namespace Prisma {
   export type PokemonCountAggregateOutputType = {
     id: number
     name: number
+    height: number
+    weight: number
     image: number
     types: number
     abilities: number
@@ -917,15 +927,21 @@ export namespace Prisma {
 
   export type PokemonAvgAggregateInputType = {
     id?: true
+    height?: true
+    weight?: true
   }
 
   export type PokemonSumAggregateInputType = {
     id?: true
+    height?: true
+    weight?: true
   }
 
   export type PokemonMinAggregateInputType = {
     id?: true
     name?: true
+    height?: true
+    weight?: true
     image?: true
     types?: true
     abilities?: true
@@ -934,6 +950,8 @@ export namespace Prisma {
   export type PokemonMaxAggregateInputType = {
     id?: true
     name?: true
+    height?: true
+    weight?: true
     image?: true
     types?: true
     abilities?: true
@@ -942,6 +960,8 @@ export namespace Prisma {
   export type PokemonCountAggregateInputType = {
     id?: true
     name?: true
+    height?: true
+    weight?: true
     image?: true
     types?: true
     abilities?: true
@@ -1037,6 +1057,8 @@ export namespace Prisma {
   export type PokemonGroupByOutputType = {
     id: number
     name: string
+    height: number
+    weight: number
     image: string
     types: string
     abilities: string
@@ -1064,6 +1086,8 @@ export namespace Prisma {
   export type PokemonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    height?: boolean
+    weight?: boolean
     image?: boolean
     types?: boolean
     abilities?: boolean
@@ -1072,6 +1096,8 @@ export namespace Prisma {
   export type PokemonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    height?: boolean
+    weight?: boolean
     image?: boolean
     types?: boolean
     abilities?: boolean
@@ -1080,6 +1106,8 @@ export namespace Prisma {
   export type PokemonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    height?: boolean
+    weight?: boolean
     image?: boolean
     types?: boolean
     abilities?: boolean
@@ -1088,12 +1116,14 @@ export namespace Prisma {
   export type PokemonSelectScalar = {
     id?: boolean
     name?: boolean
+    height?: boolean
+    weight?: boolean
     image?: boolean
     types?: boolean
     abilities?: boolean
   }
 
-  export type PokemonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "image" | "types" | "abilities", ExtArgs["result"]["pokemon"]>
+  export type PokemonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "height" | "weight" | "image" | "types" | "abilities", ExtArgs["result"]["pokemon"]>
 
   export type $PokemonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Pokemon"
@@ -1101,6 +1131,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      height: number
+      weight: number
       image: string
       types: string
       abilities: string
@@ -1529,6 +1561,8 @@ export namespace Prisma {
   interface PokemonFieldRefs {
     readonly id: FieldRef<"Pokemon", 'Int'>
     readonly name: FieldRef<"Pokemon", 'String'>
+    readonly height: FieldRef<"Pokemon", 'Int'>
+    readonly weight: FieldRef<"Pokemon", 'Int'>
     readonly image: FieldRef<"Pokemon", 'String'>
     readonly types: FieldRef<"Pokemon", 'String'>
     readonly abilities: FieldRef<"Pokemon", 'String'>
@@ -1915,6 +1949,8 @@ export namespace Prisma {
   export const PokemonScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    height: 'height',
+    weight: 'weight',
     image: 'image',
     types: 'types',
     abilities: 'abilities'
@@ -1995,6 +2031,8 @@ export namespace Prisma {
     NOT?: PokemonWhereInput | PokemonWhereInput[]
     id?: IntFilter<"Pokemon"> | number
     name?: StringFilter<"Pokemon"> | string
+    height?: IntFilter<"Pokemon"> | number
+    weight?: IntFilter<"Pokemon"> | number
     image?: StringFilter<"Pokemon"> | string
     types?: StringFilter<"Pokemon"> | string
     abilities?: StringFilter<"Pokemon"> | string
@@ -2003,6 +2041,8 @@ export namespace Prisma {
   export type PokemonOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    height?: SortOrder
+    weight?: SortOrder
     image?: SortOrder
     types?: SortOrder
     abilities?: SortOrder
@@ -2014,6 +2054,8 @@ export namespace Prisma {
     AND?: PokemonWhereInput | PokemonWhereInput[]
     OR?: PokemonWhereInput[]
     NOT?: PokemonWhereInput | PokemonWhereInput[]
+    height?: IntFilter<"Pokemon"> | number
+    weight?: IntFilter<"Pokemon"> | number
     image?: StringFilter<"Pokemon"> | string
     types?: StringFilter<"Pokemon"> | string
     abilities?: StringFilter<"Pokemon"> | string
@@ -2022,6 +2064,8 @@ export namespace Prisma {
   export type PokemonOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    height?: SortOrder
+    weight?: SortOrder
     image?: SortOrder
     types?: SortOrder
     abilities?: SortOrder
@@ -2038,6 +2082,8 @@ export namespace Prisma {
     NOT?: PokemonScalarWhereWithAggregatesInput | PokemonScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Pokemon"> | number
     name?: StringWithAggregatesFilter<"Pokemon"> | string
+    height?: IntWithAggregatesFilter<"Pokemon"> | number
+    weight?: IntWithAggregatesFilter<"Pokemon"> | number
     image?: StringWithAggregatesFilter<"Pokemon"> | string
     types?: StringWithAggregatesFilter<"Pokemon"> | string
     abilities?: StringWithAggregatesFilter<"Pokemon"> | string
@@ -2045,6 +2091,8 @@ export namespace Prisma {
 
   export type PokemonCreateInput = {
     name: string
+    height: number
+    weight: number
     image: string
     types: string
     abilities: string
@@ -2053,6 +2101,8 @@ export namespace Prisma {
   export type PokemonUncheckedCreateInput = {
     id?: number
     name: string
+    height: number
+    weight: number
     image: string
     types: string
     abilities: string
@@ -2060,6 +2110,8 @@ export namespace Prisma {
 
   export type PokemonUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+    weight?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     types?: StringFieldUpdateOperationsInput | string
     abilities?: StringFieldUpdateOperationsInput | string
@@ -2068,6 +2120,8 @@ export namespace Prisma {
   export type PokemonUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+    weight?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     types?: StringFieldUpdateOperationsInput | string
     abilities?: StringFieldUpdateOperationsInput | string
@@ -2076,6 +2130,8 @@ export namespace Prisma {
   export type PokemonCreateManyInput = {
     id?: number
     name: string
+    height: number
+    weight: number
     image: string
     types: string
     abilities: string
@@ -2083,6 +2139,8 @@ export namespace Prisma {
 
   export type PokemonUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+    weight?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     types?: StringFieldUpdateOperationsInput | string
     abilities?: StringFieldUpdateOperationsInput | string
@@ -2091,6 +2149,8 @@ export namespace Prisma {
   export type PokemonUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+    weight?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     types?: StringFieldUpdateOperationsInput | string
     abilities?: StringFieldUpdateOperationsInput | string
@@ -2125,6 +2185,8 @@ export namespace Prisma {
   export type PokemonCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    height?: SortOrder
+    weight?: SortOrder
     image?: SortOrder
     types?: SortOrder
     abilities?: SortOrder
@@ -2132,11 +2194,15 @@ export namespace Prisma {
 
   export type PokemonAvgOrderByAggregateInput = {
     id?: SortOrder
+    height?: SortOrder
+    weight?: SortOrder
   }
 
   export type PokemonMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    height?: SortOrder
+    weight?: SortOrder
     image?: SortOrder
     types?: SortOrder
     abilities?: SortOrder
@@ -2145,6 +2211,8 @@ export namespace Prisma {
   export type PokemonMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    height?: SortOrder
+    weight?: SortOrder
     image?: SortOrder
     types?: SortOrder
     abilities?: SortOrder
@@ -2152,6 +2220,8 @@ export namespace Prisma {
 
   export type PokemonSumOrderByAggregateInput = {
     id?: SortOrder
+    height?: SortOrder
+    weight?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {

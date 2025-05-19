@@ -15,17 +15,21 @@ export async function fetchAndStoreManyPokemon(limit: number = 1000) {
       const parsed = PokemonSchema.safeParse(res.data)
 
       if (parsed.success) {
-        const { name, abilities, types, sprites } = parsed.data
+        const { name, abilities, height, weight, types, sprites } = parsed.data
 
         const saved = await prisma.pokemon.upsert({
           where: { name },
           update: {
+            height,
+            weight,
             abilities: abilities.map(a => a.ability.name).join(', '),
             types: types.map(t => t.type.name).join(', '),
             image: sprites.front_default ?? '',
           },
           create: {
             name,
+            height,
+            weight,
             abilities: abilities.map(a => a.ability.name).join(', '),
             types: types.map(t => t.type.name).join(', '),
             image: sprites.front_default ?? '',

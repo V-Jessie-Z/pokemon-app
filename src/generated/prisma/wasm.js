@@ -123,6 +123,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.PokemonScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  height: 'height',
+  weight: 'weight',
   image: 'image',
   types: 'types',
   abilities: 'abilities'
