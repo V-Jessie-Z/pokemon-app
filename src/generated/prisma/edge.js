@@ -125,7 +125,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/JessicaZimondi/pokedex-app/src/generated/prisma",
+      "value": "/Users/JessicaZimondi/Projects/Github/pokemon-app/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -139,7 +139,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/JessicaZimondi/pokedex-app/prisma/schema.prisma",
+    "sourceFilePath": "/Users/JessicaZimondi/Projects/Github/pokemon-app/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
