@@ -1,6 +1,6 @@
 # Pokémon Bestiary
 
-A modern Pokémon encyclopedia built using Next.js 15, TypeScript, Prisma, PostgreSQL (Supabase or Neon), Server Actions, Zod, and Shadcn/UI. Browse and search Pokémon with a fast, responsive UI and clean developer experience.
+A modern Pokémon encyclopedia built using Next.js 15, TypeScript, Prisma, PostgreSQL (Neon), Server Actions, Zod, and Shadcn/UI. Browse and search Pokémon with a fast, responsive UI and clean developer experience.
 
 ---
 
@@ -11,7 +11,6 @@ A modern Pokémon encyclopedia built using Next.js 15, TypeScript, Prisma, Postg
 - 🛠️ Integrated PostgreSQL via Prisma ORM
 - ✅ Schema validation with Zod
 - 🎨 Beautiful UI using Tailwind and Shadcn/UI
-- 🌐 Font optimization with Geist and `next/font`
 
 ---
 
@@ -20,7 +19,7 @@ A modern Pokémon encyclopedia built using Next.js 15, TypeScript, Prisma, Postg
 - **Framework**: [Next.js 15](https://nextjs.org/)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS, Shadcn/UI
-- **Database**: PostgreSQL (via Supabase or Neon)
+- **Database**: PostgreSQL (via Neon)
 - **ORM**: [Prisma](https://www.prisma.io/)
 - **Validation**: [Zod](https://zod.dev)
 - **Fonts**: [Geist](https://vercel.com/font)
