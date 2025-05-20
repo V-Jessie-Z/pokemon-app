@@ -44,7 +44,7 @@ cd pokemon-app
 
 ### 3. Environment Variables
 
-- Create an env. file in the directory
+- Create an env. file in the root directory of the project
 - DATABASE_URL="postgresql://neondb_owner:npg_lQO81FvNPkBm@ep-yellow-frost-a44dkxnw-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
 
 ## 🧠Prisma 
