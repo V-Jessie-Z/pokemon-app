@@ -9,7 +9,18 @@ export async function getAllPokemon() {
     })
     return pokemons
   } catch (error) {
-    console.error('Error fetching Pokémon:', error)
+    console.error('❌ Error fetching Pokémon:', error)
     return []
+  }
+}
+
+export async function deleteAllPokemon() {
+  try {
+    const result = await prisma.pokemon.deleteMany({})
+    console.log(`🗑️ Deleted ${result.count} Pokémon from DB`)
+    return result
+  } catch (error) {
+    console.error('❌ Error deleting Pokémon:', error)
+    throw error
   }
 }

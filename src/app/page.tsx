@@ -10,7 +10,7 @@ export default function HomePage() {
     setLoading(true)
     setTimeout(() => {
       router.push("/pokemon")
-    }, 2000) // Match animation duration
+    }, 2000)
   }
 
   return (

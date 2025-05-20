@@ -4,7 +4,7 @@ import axios from 'axios'
 import { prisma } from '@/lib/prisma'
 import { PokemonSchema } from '@/lib/zodSchemas'
 
-export async function fetchAndStoreManyPokemon(limit: number = 1000) {
+export async function fetchAndStoreManyPokemon(limit: number = 100) {
   const baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
 
   const promises = Array.from({ length: limit }, (_, i) => i + 1).map(async (id) => {
@@ -51,4 +51,15 @@ export async function fetchAndStoreManyPokemon(limit: number = 1000) {
   const results = await Promise.all(promises)
   console.log(`✅ Done: ${results.filter(Boolean).length} Pokémon saved to DB`)
   return results.filter(Boolean)
+}
+
+export async function deleteAllPokemon() {
+  try {
+    const deleted = await prisma.pokemon.deleteMany({})
+    console.log(`🗑️ Deleted ${deleted.count} Pokémon from DB`)
+    return deleted
+  } catch (error) {
+    console.error('❌ Failed to delete Pokémon:', error)
+    throw error
+  }
 }
