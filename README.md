@@ -60,7 +60,7 @@ cd pokemon-app
   
 - PS. If you get an error, try restarting your visual studio code so that the enviromental variables can load
 - If that doesn't work run this:
-# npx prisma migrate dev --name init --url="postgresql://neondb_owner:npg_lQO81FvNPkBm@ep-yellow-frost-a44dkxnw-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
+#### npx prisma migrate dev --name init --url="postgresql://neondb_owner:npg_lQO81FvNPkBm@ep-yellow-frost-a44dkxnw-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
 
 
 ### 3. Inspect the databse
