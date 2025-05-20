@@ -1,5 +1,6 @@
 import { z } from "zod"
 
+// Define the schema for a Pokémon object
 export const PokemonSchema = z.object({
   name: z.string(),
   height: z.number(),

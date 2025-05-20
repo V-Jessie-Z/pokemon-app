@@ -1,5 +1,6 @@
 import { PrismaClient } from "@/generated/prisma"
 
+// Create a global variable on the globalThis object to hold the PrismaClient instance
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
 
 export const prisma =

@@ -121,6 +121,9 @@
   }
 }
 
+
+/*Animate Pikachu to from left to right */
+
 @keyframes pikachu-run {
   0% {
     left: -100px;
@@ -133,6 +136,9 @@
 .animate-pikachu-run {
   animation: pikachu-run 2.5s linear forwards;
 }
+
+
+/*Animate loading bar to fill up from left to right */
 
 @keyframes loading-bar {
   0% {
@@ -147,6 +153,8 @@
   animation: loading-bar 2.5s linear forwards;
 }
 
+
+/*On and Off glow for "View Pokemon list" in home page*/
 @keyframes glow {
   0%, 100% {
     box-shadow: 0 0 10px #facc15, 0 0 20px #facc15;

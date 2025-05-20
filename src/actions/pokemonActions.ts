@@ -4,19 +4,24 @@ import axios from 'axios'
 import { prisma } from '@/lib/prisma'
 import { PokemonSchema } from '@/lib/zodSchemas'
 
+
+//Function to fetch Pokemon data from the API and save it to the database
 export async function fetchAndStoreManyPokemon(limit: number = 100) {
   const baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
 
+  //Fetches array of Pokemon data from API
   const promises = Array.from({ length: limit }, (_, i) => i + 1).map(async (id) => {
     try {
       const res = await axios.get(`${baseUrl}${id}`)
       console.log(`✅ Fetched Pokémon #${id}: ${res.data.name}`)
 
+      //Validates data using Zod
       const parsed = PokemonSchema.safeParse(res.data)
 
       if (parsed.success) {
         const { name, abilities, height, weight, types, sprites } = parsed.data
-
+        
+        //Saves each Pokemon to the database using PRISMA
         const saved = await prisma.pokemon.upsert({
           where: { name },
           update: {
@@ -38,6 +43,7 @@ export async function fetchAndStoreManyPokemon(limit: number = 100) {
 
         console.log(`💾 Saved to DB: ${saved.name}`)
         return saved
+        //Error handling
       } else {
         console.warn(`❌ Zod validation failed for Pokémon #${id}`, parsed.error.format())
         return null
@@ -48,11 +54,15 @@ export async function fetchAndStoreManyPokemon(limit: number = 100) {
     }
   })
 
+  //Return saved Pokemon
   const results = await Promise.all(promises)
   console.log(`✅ Done: ${results.filter(Boolean).length} Pokémon saved to DB`)
   return results.filter(Boolean)
 }
 
+
+
+//Function that deletes all Pokemon data from the database
 export async function deleteAllPokemon() {
   try {
     const deleted = await prisma.pokemon.deleteMany({})

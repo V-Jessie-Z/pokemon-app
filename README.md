@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokémon Bestiary
 
-## Getting Started
+A modern Pokémon encyclopedia built using Next.js 15, TypeScript, Prisma, PostgreSQL (Supabase or Neon), Server Actions, Zod, and Shadcn/UI. Browse and search Pokémon with a fast, responsive UI and clean developer experience.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
+## 🚀 Features
+
+- 🔍 Browse and search Pokémon
+- ⚡ Fast server-side logic via Server Actions
+- 🛠️ Integrated PostgreSQL via Prisma ORM
+- ✅ Schema validation with Zod
+- 🎨 Beautiful UI using Tailwind and Shadcn/UI
+- 🌐 Font optimization with Geist and `next/font`
+
+---
+
+## 🧱 Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS, Shadcn/UI
+- **Database**: PostgreSQL (via Supabase or Neon)
+- **ORM**: [Prisma](https://www.prisma.io/)
+- **Validation**: [Zod](https://zod.dev)
+- **Fonts**: [Geist](https://vercel.com/font)
+- **Deployment**: [Vercel](https://vercel.com)
+
+---
+
+## 📦 Getting Started
+
+### 1. Clone the Repository
+
+git clone https://github.com/V-Jessie-Z/pokemon-app.git
+cd pokemon-app
+
+### 2. Install dependencies
+
+- npm install
 # or
-yarn dev
+- yarn install
 # or
-pnpm dev
+- pnpm install
+
+### 3. Environment Variables
+
+- Create an env. file in the directory
+- DATABASE_URL="postgresql://neondb_owner:npg_lQO81FvNPkBm@ep-yellow-frost-a44dkxnw-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
+
+## 🧠Prisma 
+
+### 1. Generate Prisma Client
+
+- npx prisma generate
+
+### 2. Run migration
+
+- npx prisma migrate dev --name init
+
+### 3. Inspect the databse
+
+- npx prisma studio
+
+
+## 💻Running the App Locally
+
+- npm run dev
 # or
-bun dev
-```
+- yarn dev
+# or
+- pnpm dev
+# or
+-bun dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+✅ Then visit: http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

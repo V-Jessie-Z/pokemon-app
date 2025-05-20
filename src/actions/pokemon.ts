@@ -2,6 +2,8 @@
 
 import { prisma } from '@/lib/prisma'
 
+
+//Function to get all pokemon data from the database using PRISMA
 export async function getAllPokemon() {
   try {
     const pokemons = await prisma.pokemon.findMany({
@@ -14,6 +16,8 @@ export async function getAllPokemon() {
   }
 }
 
+
+//Function to delete all pokemon data from the database using PRISMA
 export async function deleteAllPokemon() {
   try {
     const result = await prisma.pokemon.deleteMany({})
