@@ -1,4 +1,5 @@
-'use server'
+'use server';
+
 
 import axios from 'axios'
 import { prisma } from '@/lib/prisma'
