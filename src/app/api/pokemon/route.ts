@@ -22,3 +22,5 @@ export async function GET() {
     console.error("❌ Failed to fetch Pokémon:", error);
     return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }}
+
+  
