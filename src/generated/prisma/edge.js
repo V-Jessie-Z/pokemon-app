@@ -138,6 +138,10 @@ const config = {
         "fromEnvVar": null,
         "value": "darwin-arm64",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -155,6 +159,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -163,8 +168,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\n//Declared Pokemon model\n\nmodel Pokemon {\n  id        Int    @id @default(autoincrement())\n  name      String @unique\n  height    Int\n  weight    Int\n  image     String\n  types     String\n  abilities String\n}\n",
-  "inlineSchemaHash": "f8fe1dfa35d1f997fa82b1ed567b11c6015d3f4460d196f3875243a392955cb9",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../src/generated/prisma\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\n//Declared Pokemon model\n\nmodel Pokemon {\n  id        Int    @id @default(autoincrement())\n  name      String @unique\n  height    Int\n  weight    Int\n  image     String\n  types     String\n  abilities String\n}\n",
+  "inlineSchemaHash": "1bab81573452717d2b1ba15f06044c7c0ce97144ebc75413ffe9e7ccce66712c",
   "copyEngine": true
 }
 config.dirname = '/'
