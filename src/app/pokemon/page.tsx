@@ -26,8 +26,9 @@ export default function PokemonList() {
   // Fetch all Pokémon once on component mount
   useEffect(() => {
     const fetchPokemon = async () => {
-      const data = await getAllPokemon()
-      setPokemons(data)
+      const res = await fetch('/api/pokemon');
+      const data = await res.json();
+      setPokemons(data);
     }
     fetchPokemon()
   }, [])
