@@ -19,10 +19,10 @@ A modern Pokémon encyclopedia built using Next.js 15, TypeScript, Prisma, Postg
 ![Landing Page](./public/Home.png)
 
 - Pokemon Grid Page
-![Pokemon Grid Page](./public/PokemonList.png.png)
+![Pokemon Grid Page](./public/PokemonList.png)
 
 - Pokemon Card Page
-![Pokemon Card Page](./public/Card.png.png)
+![Pokemon Card Page](./public/Card.png)
 ---
 
 ## 🧱 Tech Stack
