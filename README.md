@@ -12,6 +12,17 @@ A modern Pokémon encyclopedia built using Next.js 15, TypeScript, Prisma, Postg
 - ✅ Schema validation with Zod
 - 🎨 Beautiful UI using Tailwind and Shadcn/UI
 
+
+## 📸 Screenshots
+
+- Landing Page
+![Landing Page](./public/Home.png)
+
+- Pokemon Grid Page
+![Pokemon Grid Page](./public/PokemonList.png.png)
+
+- Pokemon Card Page
+![Pokemon Card Page](./public/Card.png.png)
 ---
 
 ## 🧱 Tech Stack
