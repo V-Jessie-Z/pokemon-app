@@ -14,7 +14,7 @@ export default function HomePage() {
 
     // After 2 seconds, navigate to /pokemon page
     setTimeout(() => {
-      router.push("/pokemon")
+      router.push("/home")
     }, 2000)
   }
 
@@ -39,7 +39,7 @@ export default function HomePage() {
           onClick={handleClick}
           className="bg-yellow-400 text-black font-bold py-3 px-6 rounded-full shadow-2xl transition duration-300 animate-glow"
         >
-          View Pokémon List
+          Enter World
         </button>
       </div>
 

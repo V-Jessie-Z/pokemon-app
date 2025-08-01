@@ -1,69 +1,73 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { getAllPokemon } from "@/actions/pokemon"
+import { useRouter } from "next/navigation"
 import { AddManyPokemonButton } from "@/components/AddPokemonButton"
 import { DeleteAllPokemonButton } from "@/components/RemovePokemonButton"
 
-// Define Pokemon object 
 type Pokemon = {
   id: number
   name: string
   image: string
-  types: string 
+  types: string
   weight: number
   height: number
   abilities: string
 }
 
 export default function PokemonList() {
-
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null)
   const [selectedType, setSelectedType] = useState<string>("All")
+  const [searchTerm, setSearchTerm] = useState<string>("")
+  const router = useRouter()
 
-
-  // Fetch all Pokémon once on component mount
   useEffect(() => {
     const fetchPokemon = async () => {
-      const res = await fetch('/api/pokemon');
-      const data = await res.json();
-      setPokemons(data);
+      const res = await fetch("/api/pokemon")
+      const data = await res.json()
+      setPokemons(data)
     }
     fetchPokemon()
   }, [])
 
-  // Get Pokémon types from the loaded list for the filter dropdown
   const allTypes = Array.from(
-    new Set(
-      pokemons.flatMap((p) =>
-        p.types.split(",").map((t) => t.trim()) 
-      )
-    )
+    new Set(pokemons.flatMap((p) => p.types.split(",").map((t) => t.trim())))
   )
 
-  // Filter Pokémon by selected type; if "All" show all Pokémon
-  const filteredPokemons =
-    selectedType === "All"
-      ? pokemons
-      : pokemons.filter((p) =>
-          p.types.split(",").map((t) => t.trim()).includes(selectedType)
-        )
+  const filteredPokemons = pokemons.filter((p) => {
+    const matchesType =
+      selectedType === "All" ||
+      p.types.split(",").map((t) => t.trim()).includes(selectedType)
+
+    const matchesSearch = p.name
+      .toLowerCase()
+      .includes(searchTerm.trim().toLowerCase())
+
+    return matchesType && matchesSearch
+  })
 
   return (
     <div
       className="min-h-screen bg-fixed bg-cover bg-center"
       style={{
-        // Background image of Pokémon wallpaper
         backgroundImage: "url('https://wallpapercave.com/wp/MTFGvNm.jpg')",
       }}
     >
       <br />
       <main className="p-4 max-w-5xl mx-auto bg-white/50 rounded-xl mt-10 relative">
+        {/* Back button */}
+        <button
+          onClick={() => router.back()}
+          className="mb-4 text-gray-700 hover:text-red-500 font-semibold transition"
+        >
+          ← Back
+        </button>
+
         <div
           className={
             selectedPokemon
-              ? "filter blur-sm brightness-50 transition-all duration-300" // blur background when modal open
+              ? "filter blur-sm brightness-50 transition-all duration-300"
               : "transition-all duration-300"
           }
         >
@@ -71,9 +75,8 @@ export default function PokemonList() {
             Pokémon List
           </h1>
 
-       
-          <div className="mb-4 flex justify-center items-center gap-4 flex-wrap">
-            {/* Type filter dropdown */}
+          {/* Filters */}
+          <div className="mb-4 flex flex-col sm:flex-row justify-center items-center gap-4 flex-wrap">
             <select
               className="border border-gray-300 rounded-md p-2 text-black"
               value={selectedType}
@@ -87,32 +90,35 @@ export default function PokemonList() {
               ))}
             </select>
 
-            {/* Conditionally show Add or Delete button depending on whether pokemons exist */}
-            {pokemons.length === 0 && <AddManyPokemonButton />}
-            {pokemons.length > 0 && <DeleteAllPokemonButton />}
+            <input
+              type="text"
+              placeholder="Search by name..."
+              className="border border-gray-300 rounded-md p-2 text-black"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
 
-          {/* Show message if no Pokémon found */}
+  
+
+          {/* Pokémon Grid */}
           {filteredPokemons.length === 0 ? (
             <p className="text-muted-foreground text-center">
-              No Pokémon found. Press the Add button.
+              No Pokémon found. Try a different name or type.
             </p>
           ) : (
-            // Display Pokémon grid filtered by selected type
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {filteredPokemons.map((p) => (
                 <div
                   key={p.id}
                   className="cursor-pointer border rounded-xl p-4 shadow-md bg-white bg-opacity-90 backdrop-blur-sm hover:scale-105 transition-transform"
-                  onClick={() => setSelectedPokemon(p)} // Show modal on click
+                  onClick={() => setSelectedPokemon(p)}
                 >
-                  {/* Pokémon image */}
                   <img
                     src={p.image || "/placeholder.png"}
                     alt={p.name}
                     className="w-36 h-36 mx-auto mb-2 object-contain"
                   />
-                  {/* Pokémon name */}
                   <h3 className="text-lg text-center font-medium capitalize">
                     {p.name}
                   </h3>
@@ -122,26 +128,21 @@ export default function PokemonList() {
           )}
         </div>
 
-        {/* Modal for displaying detailed Pokémon info */}
+        {/* Modal */}
         {selectedPokemon && (
           <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
             <div className="relative w-[420px] h-[590px]">
-              {/* Pokémon card background */}
               <img
                 src="/poke-card.png"
                 alt="Pokémon card"
                 className="absolute inset-0 w-full h-full object-contain z-20"
               />
-
-              {/* Close button */}
               <button
                 className="absolute top-6 right-8 z-20 text-white text-xl hover:text-red-500"
-                onClick={() => setSelectedPokemon(null)} // Close modal
+                onClick={() => setSelectedPokemon(null)}
               >
                 ✕
               </button>
-
-              {/* Pokémon image container inside card */}
               <div className="absolute top-[63px] left-1/2 transform -translate-x-1/2 w-[350px] h-[230px] z-10">
                 <div className="relative w-full h-full rounded-lg overflow-hidden">
                   <img
@@ -152,25 +153,21 @@ export default function PokemonList() {
                   <img
                     src={selectedPokemon.image || "/placeholder.png"}
                     alt={selectedPokemon.name}
-                    className="relative z-20 w-full h-full opacity-300 object-contain p-4"
+                    className="relative z-20 w-full h-full object-contain p-4"
                   />
                 </div>
               </div>
-
-              {/* Pokémon name */}
               <h2 className="absolute top-[25px] left-1/2 transform -translate-x-1/2 text-xl drop-shadow-lg font-bold capitalize text-black z-20 ">
                 {selectedPokemon.name}
               </h2>
-
-              {/* Pokémon details */}
               <div className="absolute bottom-[150px] left-1/2 transform -translate-x-1/2 w-[85%] text-sm text-black font-medium z-20 space-y-1">
                 <p>
                   <span className="text-gray-800 font-bold">Height:</span>{" "}
-                  {selectedPokemon.height / 10} m {/* Convert decimeters to meters */}
+                  {selectedPokemon.height / 10} m
                 </p>
                 <p>
                   <span className="text-gray-800 font-bold">Weight:</span>{" "}
-                  {selectedPokemon.weight / 10} kg {/* Convert hectograms to kg */}
+                  {selectedPokemon.weight / 10} kg
                 </p>
                 <p>
                   <span className="text-gray-800 font-bold">Type(s):</span>{" "}
